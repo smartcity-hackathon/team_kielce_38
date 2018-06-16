@@ -1,0 +1,343 @@
+<html>
+<head>
+  <head>
+    <title>Smart Citizen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Tajawal" rel="stylesheet">
+    <link href="css/skewed.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+      <style>
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    </style>
+
+    <script>
+
+    var i = 0;
+    var j = 1;
+    var k = 2;
+    var l = 3;
+    var data = [];
+    function replacedivs() {
+      console.log(i)
+      console.log(data[i])
+      $( "#cat1" ).html(data[i].category );
+      $( "#que1" ).html(data[i].question );
+      $( "#dis1" ).html('Odleglość : ' +String(data[i].distance) +' km');
+      $( "#vot1" ).html('Głosy : '+String(data[i].popularity));
+      $( "#cat2" ).html(data[j].category );
+      $( "#que2" ).html(data[j].question );
+      $( "#dis2" ).html('Odlegość : '+String(data[j].distance) + ' km' );
+      $( "#vot2" ).html('Głosy : '+String(data[j].popularity));
+      $( "#cat3" ).html(data[k].category );
+      $( "#que3" ).html(data[k].question );
+      $( "#dis3" ).html('Odlegość : '+String(data[k].distance) + ' km' );
+      $( "#vot3" ).html('Głosy : '+String(data[k].popularity));
+    }
+
+    var len;
+      $.get('/getjson', (dat, status) => {
+        data = JSON.parse(dat);
+        replacedivs();
+        len = data.length;
+        console.log(data.length)
+      });
+
+
+      $(document).ready(function(){
+        $("#rat1").click(function(){
+          if(l < len) {
+            $(this).parent().fadeOut("slow").finish(true).fadeIn();
+            i = l;
+            l++;
+            if(l == 9) {
+              modal.style.display = "block";
+            }
+            console.log(l)
+            replacedivs();
+          }
+        });
+
+        $("#rat2").click(function(){
+          if(l < len) {
+            $(this).parent().fadeOut("slow").finish(true).fadeIn();
+            j = l;
+            l++;
+            if(l == 9) {
+              modal.style.display = "block";
+            }
+            replacedivs();
+          }
+
+        });
+
+        $("#rat3").click(function(){
+          if(l < len) {
+            $(this).parent().fadeOut("slow").finish(true).fadeIn();
+            k = l;
+            l++;
+            if(l == 9) {
+              modal.style.display = "block";
+            }
+            replacedivs();
+          }
+
+        });
+
+      console.log(len)
+
+        $("#window_close").click(function(){
+          if(l < len) {
+            $(this).parent().parent().fadeOut("slow").finish(true).fadeIn();
+            i = l;
+            l++;
+            if(l == 9) {
+              modal.style.display = "block";
+            }
+            replacedivs();
+          }
+        });
+
+        $("#window_close_2").click(function(){
+          if(l < len) {
+            $(this).parent().parent().fadeOut("slow").finish(true).fadeIn();
+            j = l;
+            l++;
+            if(l == 9) {
+              modal.style.display = "block";
+            }
+            replacedivs();
+          }
+        });
+
+        $("#window_close_3").click(function(){
+          if(l < len) {
+            $(this).parent().parent().fadeOut("slow").finish(true).fadeIn();
+            k = l;
+            l++;
+            if(l == 9) {
+              modal.style.display = "block";
+            }
+            replacedivs();
+          }
+        });
+      });
+
+    </script>
+  </head>
+<body>
+  <div class="overlay"></div>
+
+
+      <div class="overlay"></div>
+      <div class="masthead">
+        <div class="masthead-bg"></div>
+        <div class="container h-100">
+
+            <div class="col-12 my-auto">
+              <div class="masthead-content text-white py-5 py-md-0">
+                <h1 class="mb-3">Smart Citizen</h1>
+              </div>
+              <div class="row">
+                <div class="col-sm-7 col-md-7 col-lg-7 custom-offset col-xs-12">
+                  <div class="survey">
+                    <div class="col-xs-2 col-md-1 col-sm-1 col-lg-2 left-inside-tile">
+                      <div class="col-xs-12"><i class="fab fa-facebook-square survey-social-icon"></i></div>
+                      <div class="col-xs-12"><i class="fab fa-twitter-square survey-social-icon"></i></div>
+                      <div class="col-xs-12"><i class="fab fa-google-plus-square survey-social-icon"></i></div>
+                    </div>
+                    <div class="col-xs-10 col-md-11 col-sm-11 col-lg-10 survey-body">
+                      <div class="row">
+                      <div class="col-xs-12">
+                      <h5 class="header-tag"><div id="cat1"></div><span id="window_close" style="float:right;"><i class="fa fa-window-close" aria-hidden="true"></i></span></h5>
+                      <p class="survey-question"><div class="test" id="que1"></div></p>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="rating" id="rat1">
+                                      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+  `                        <div class="col-xs-12">
+                              <div class="survey-info" id="dis1"></div>
+                            </div>
+                              <div class="col-xs-12">
+                                <p class="survey-info" id="vot1"></p>
+                              </div>
+                            </div>
+                          </div>`
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+              <div class="row">
+                <div class="col-sm-7 col-md-7 col-lg-7 custom-offset col-xs-12">
+                  <div class="survey">
+                    <div class="col-xs-2 col-md-1 col-sm-1 col-lg-2 left-inside-tile">
+                      <div class="col-xs-12"><i class="fab fa-facebook-square survey-social-icon"></i></div>
+                      <div class="col-xs-12"><i class="fab fa-twitter-square survey-social-icon"></i></div>
+                      <div class="col-xs-12"><i class="fab fa-google-plus-square survey-social-icon"></i></div>
+                    </div>
+                    <div class="col-xs-10 col-md-11 col-sm-11 col-lg-10 survey-body">
+                      <div class="row">
+                      <div class="col-xs-12">
+                      <h5 class="header-tag"><div id="cat2"></div><span id="window_close_2" style="float:right;"><i class="fa fa-window-close" aria-hidden="true"></i></span></h5>
+                      <p class="survey-question"><div class="test" id="que2"></div></p>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="rating" id="rat2">
+                                      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+  `                        <div class="col-xs-12">
+                              <div class="survey-info" id="dis2"></div>
+                            </div>
+                              <div class="col-xs-12">
+                                <p class="survey-info" id="vot2"></p>
+                              </div>
+                            </div>
+                          </div>`
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-7 col-md-7 col-lg-7 custom-offset col-xs-12">
+                      <div class="survey">
+                        <div class="col-xs-2 col-md-1 col-sm-1 col-lg-2 left-inside-tile">
+                          <div class="col-xs-12"><i class="fab fa-facebook-square survey-social-icon"></i></div>
+                          <div class="col-xs-12"><i class="fab fa-twitter-square survey-social-icon"></i></div>
+                          <div class="col-xs-12"><i class="fab fa-google-plus-square survey-social-icon"></i></div>
+                        </div>
+                        <div class="col-xs-10 col-md-11 col-sm-11 col-lg-10 survey-body">
+                          <div class="row">
+                          <div class="col-xs-12">
+                          <h5 class="header-tag"><div id="cat3"></div><span id="window_close_3" style="float:right;"><i class="fa fa-window-close" aria-hidden="true"></i></span></h5>
+                          <p class="survey-question"><div class="test" id="que3"></div></p>
+                          </div>
+                          <div class="col-xs-6">
+                            <div class="rating" id="rat3">
+                                          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                            </div>
+                          </div>
+                          <div class="col-xs-6">
+      `                        <div class="col-xs-12">
+                                  <div class="survey-info" id="dis3"></div>
+                                </div>
+                                  <div class="col-xs-12">
+                                    <p class="survey-info" id="vot3"></p>
+                                  </div>
+                                </div>
+                              </div>`
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="social-icons">
+      <ul class="list-unstyled text-center mb-0">
+        <li class="list-unstyled-item">
+          <a href="/">
+            <i class="fas fa-home"></i>
+          </a>
+        </li>
+        <li class="list-unstyled-item">
+          <a href="/form">
+            <i class="fas fa-pencil-alt"></i>
+          </a>
+        </li>
+        <li class="list-unstyled-item">
+          <a href="/plot">
+            <i class="far fa-chart-bar"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <a href="" download="voucher.jpg" id="my_code">Get your vocher!</a><br>
+      </div>
+    </div>
+      <script src="js/vide.js"></script>
+      <script src="js/uxindex.js"></script>
+      <script type="text/javascript" src="js/qrcode.js"></script>
+      <!-- QR UTF-8 Support -->
+      <script type="text/javascript" src="js/qrcode_UTF8.js"></script>
+      <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+      </script>
+
+
+  		<script type="text/javascript" src="js/qr.js"></script>
+</body>
+</html>

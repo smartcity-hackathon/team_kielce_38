@@ -1,0 +1,26 @@
+{
+  "name": "html",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.1.1",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^6.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-force-ssl": "^0.3.2",
+    "express-session": "^1.15.6",
+    "mysql": "^2.15.0",
+    "popper.js": "^1.14.3",
+    "socket.io": "^2.1.1",
+    "startbootstrap-stylish-portfolio": "^4.0.0"
+  }
+}
